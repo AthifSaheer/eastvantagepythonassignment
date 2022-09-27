@@ -89,16 +89,16 @@ async def delete_address(address_id: int, db: Session = Depends(get_db)):
     db.commit()
     return "Address successfully deleted!"
 
-@app.get("/get/under/distance/{location}/{distance}")
-def get_under_distance(location, distance, db: Session = Depends(get_db)):
+@app.get("/get/under/distance/{latitude}/{longitude}/{distance}")
+def get_under_distance(latitude, longitude, distance, db: Session = Depends(get_db)):
     # address = db.query(models.AddressBook).filter(models.AddressBook.location == location)
     address = db.query(models.AddressBook).all()
-    location = geolocator.geocode(location)
+    # location = geolocator.geocode(location)
 
     data = []
     for add in address:
         coords_1 = (add.latitude, add.longitude)
-        coords_2 = (location.latitude, location.longitude)
+        coords_2 = (latitude, longitude)
         km = GeoDistance.geodesic(coords_1, coords_2).km
 
         if km < int(distance):
