@@ -1,15 +1,12 @@
 from fastapi import FastAPI, HTTPException, Depends
 from db_sqlite import engine, SessionLocal
 from pydantic import BaseModel, Field
+from geopy.geocoders import Nominatim
+import geopy.distance as GeoDistance
 from sqlalchemy.orm import Session
-# from geo import lag_log
-import asyncio
 import models
 
-from geopy.geocoders import Nominatim
-
 app = FastAPI()
-
 models.Base.metadata.create_all(bind=engine)
 
 def get_db():
@@ -26,9 +23,6 @@ class AddressBook(BaseModel):
     last_name: str = Field(min_length=1)
     postcode: int = Field()
     location: str = Field(min_length=1, max_length=100)
-
-
-# ADDRESSBOOKS = []
 
 
 @app.get("/")
@@ -83,7 +77,6 @@ def update_address(address_id: int, address: AddressBook, db: Session = Depends(
 
 @app.delete("/{address_id}")
 async def delete_address(address_id: int, db: Session = Depends(get_db)):
-
     address_model = db.query(models.AddressBook).filter(models.AddressBook.id == address_id).first()
 
     if address_model is None:
@@ -93,5 +86,22 @@ async def delete_address(address_id: int, db: Session = Depends(get_db)):
         )
 
     db.query(models.AddressBook).filter(models.AddressBook.id == address_id).delete()
-
     db.commit()
+    return "Address successfully deleted!"
+
+@app.get("/get/under/distance/{location}/{distance}")
+def get_under_distance(location, distance, db: Session = Depends(get_db)):
+    # address = db.query(models.AddressBook).filter(models.AddressBook.location == location)
+    address = db.query(models.AddressBook).all()
+    location = geolocator.geocode(location)
+
+    data = []
+    for add in address:
+        coords_1 = (add.latitude, add.longitude)
+        coords_2 = (location.latitude, location.longitude)
+        km = GeoDistance.geodesic(coords_1, coords_2).km
+
+        if km < int(distance):
+            data.append(add)
+
+    return data

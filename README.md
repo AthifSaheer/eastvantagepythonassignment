@@ -1,11 +1,7 @@
-# Youtube-FastAPI-Part1
-## Get Started Downloads : Requirements
+# Eastvantage Python Assignment
+## Get Started : Requirements
 
-1. **pip install fastapi**
-2. **pip install uvicorn**
-3. **pip install sqlalchemy**
-
-**Must have SQLite3 Install on machine**
+1. **pip install -r requirements.txt**
 
 ## To run app
 
