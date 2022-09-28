@@ -17,7 +17,7 @@ If you would love to run this project on your local env I will walk you through:
 
 1. Clone the repo
    ```sh
-   https://github.com/AthifSaheer/eastvantagepythonassignment/
+   git clone https://github.com/AthifSaheer/eastvantagepythonassignment/
    ```
 
 2. Navigate to the project
@@ -25,14 +25,14 @@ If you would love to run this project on your local env I will walk you through:
    cd eastvantagepythonassignment
    ```
    
-3. Activate virtualenv
-   ```sh
-   source venv/bin/activate
-   ```
-   
-4. Create virutal environment
+3. Create virutal environment
    ```sh
    virtualenv venv
+   ```
+
+4. Activate virtualenv
+   ```sh
+   source venv/bin/activate
    ```
    
 5. Install requirements.txt
