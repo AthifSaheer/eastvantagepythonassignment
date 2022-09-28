@@ -6,7 +6,7 @@
 
 * Backend - `Python FastAPI`
 * Frontend - `Built-in FastAPI’s Swagger UI`
-* Libraries - `pydantic` `SQLAlchemy` `uvicorn`
+* Libraries - `pydantic` `SQLAlchemy` `uvicorn` `geopy`
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -15,31 +15,36 @@ If you would love to run this project on your local env I will walk you through:
 
 ### Installation
 
-1. Create virutal environment
+1. Clone the repo
    ```sh
-   virtualenv venv
+   https://github.com/AthifSaheer/eastvantagepythonassignment/
+   ```
+
+2. Navigate to the project
+   ```sh
+   cd eastvantagepythonassignment
    ```
    
-2. Activate virtualenv
+3. Activate virtualenv
    ```sh
    source venv/bin/activate
    ```
    
-3. Clone the repo
+4. Create virutal environment
    ```sh
-   https://github.com/AthifSaheer/eastvantagepythonassignment/
+   virtualenv venv
    ```
    
-4. Install requirements.txt
+5. Install requirements.txt
    ```sh
    pip install -r requirements.txt
    ```
    
-5. Run the project:
+6. Run the project:
    ```sh
    uvicorn main:app --reload
    ```
-6. Access the project:
+7. Access the project:
    ```sh
    http://127.0.0.1:8000/docs
    ```
