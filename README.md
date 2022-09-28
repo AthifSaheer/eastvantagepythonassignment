@@ -6,6 +6,7 @@
 
 * Backend - `Python FastAPI`
 * Frontend - `Built-in FastAPI’s Swagger UI`
+* Libraries - `pydantic` `SQLAlchemy` `uvicorn`
 
 <!-- GETTING STARTED -->
 ## Getting Started

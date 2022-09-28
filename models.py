@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String
 from db_sqlite import Base
 
-
+# Table of the address(sqlite)
 class AddressBook(Base):
     __tablename__ = "address book"
 
